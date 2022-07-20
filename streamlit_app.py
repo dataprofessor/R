@@ -6,13 +6,12 @@ st.header('🎈 R x Python Streamlit App')
 
 st.sidebar.markdown('''
 # About
-This demo shows the use of R in a Streamlit App by showcasing 3 example use cases.
+This demo shows the use of R in a Streamlit App by showcasing a simple example use case.
 
-The R code for all 3 examples are rendered on-the-fly in this app.
+The R code is rendered on-the-fly in this app.
 
 R packages used:
 - `ggplot2`
-- `cowplot`
 ''')
 
 
