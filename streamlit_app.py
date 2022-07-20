@@ -130,3 +130,35 @@ result3 = process3.communicate()
 image = Image.open('lipinski.png')
 st.image(image)
 st.caption('**Figure 2.** A reproduction of Figure 3 from the [HCVpred](https://onlinelibrary.wiley.com/doi/abs/10.1002/jcc.26223) paper using code publicly available on [GitHub](https://github.com/chaninlab/hcvpred).')
+
+
+st.subheader('4. Creating a Dot plot using `ggplot2`')
+with st.expander('See code'):
+  code4 = '''# r-statistics
+# http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html#Area%20Chart
+
+library(ggplot2)
+library(scales)
+theme_set(theme_classic())
+
+ggplot(cty_mpg, aes(x=make, y=mileage)) +
+  geom_point(col="tomato", size=3) + 
+  geom_segment(aes(x=make,
+                   xend=make,
+                   y=min(mileage),
+                   yend=max(mileage)),
+               linetype="dashed",
+               size=0.1) +
+  labs(title="Dot Plot",
+       subtitle="Make vs Avg. Mileage",
+       caption="source: mpg") +
+  coord_flip()
+
+ggsave('plot2.png')
+  '''
+  st.code(code4, language='R')
+process4 = subprocess.Popen(["Rscript", "plot2.R"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+result4 = process2.communicate()
+image = Image.open('plot2.png')
+st.image(image)
+st.caption('**Figure 3.** A simple scatter plot of *wt* as a function of *mpg* from the mtcars dataset.')
